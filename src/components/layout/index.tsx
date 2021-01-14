@@ -1,5 +1,6 @@
 import Head from "next/head";
 import React, { ReactNode } from "react";
+import Div100vh from "react-div-100vh";
 
 import { Navbar } from "./navbar";
 
@@ -19,10 +20,10 @@ export const Layout = ({ children, title = "WII?" }: Props): JSX.Element => {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-      <div className="h-screen flex flex-col">
+      <Div100vh className="flex flex-col">
         <Navbar />
         {children}
-      </div>
+      </Div100vh>
     </>
   );
 };
