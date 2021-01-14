@@ -9,12 +9,18 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "add": "2.0.6",
+    "autoprefixer": "10.2.1",
     "firebase": "8.2.2",
     "firebase-admin": "9.4.2",
+    "firebaseui": "4.7.1",
     "next": "latest",
     "nookies": "2.5.0",
+    "postcss": "8.2.4",
     "react": "16.12.0",
-    "react-dom": "16.12.0"
+    "react-dom": "16.12.0",
+    "tailwindcss": "2.0.2",
+    "yarn": "1.22.10"
   },
   "devDependencies": {
     "@fewlines/eslint-config": "3.0.0",
@@ -29,7 +35,9 @@
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-prettier": "3.3.1",
     "eslint-plugin-react": "7.22.0",
+    "postcss-nested": "5.0.3",
     "prettier": "2.2.1",
+    "stylelint-config-recommended": "3.0.0",
     "typescript": "3.9.6"
   },
   "license": "ISC",
@@ -38,6 +46,7 @@
       "@fewlines/eslint-config/typescript",
       "@fewlines/eslint-config/react",
       "@fewlines/eslint-config/react-typescript"
-    ]
+    ],
+    "ignorePatterns": "*.js"
   }
 }

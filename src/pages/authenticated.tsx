@@ -9,11 +9,27 @@ import React from "react";
 import { firebaseAdmin } from "../firebase/admin";
 import { firebaseClient } from "../firebase/client";
 
+const AuthenticatedPage: NextPage = (
+  props: InferGetServerSidePropsType<typeof getServerSideProps>,
+) => (
+  <div>
+    <p>{props.message}</p>
+    <button
+      onClick={async () => {
+        await firebaseClient.auth().signOut();
+        window.location.href = "/";
+      }}
+    >
+      Sign out
+    </button>
+  </div>
+);
+
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   try {
     const cookies = nookies.get(ctx);
-    console.log(JSON.stringify(cookies, null, 2));
-    const token = await firebaseAdmin.auth().verifyIdToken(cookies.token);
+    const accessToken = cookies.token;
+    const token = await firebaseAdmin.auth().verifyIdToken(accessToken);
     const { uid, email } = token;
 
     // the user is authenticated!
@@ -37,21 +53,5 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     };
   }
 };
-
-const AuthenticatedPage: NextPage = (
-  props: InferGetServerSidePropsType<typeof getServerSideProps>,
-) => (
-  <div>
-    <p>{props.message}</p>
-    <button
-      onClick={async () => {
-        await firebaseClient.auth().signOut();
-        window.location.href = "/";
-      }}
-    >
-      Sign out
-    </button>
-  </div>
-);
 
 export default AuthenticatedPage;

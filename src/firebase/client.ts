@@ -1,5 +1,6 @@
 import firebaseClient from "firebase/app";
 import "firebase/auth";
+import "firebase/firestore";
 
 if (typeof window !== "undefined" && !firebaseClient.apps.length) {
   firebaseClient.initializeApp({

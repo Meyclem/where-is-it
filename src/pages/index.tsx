@@ -1,11 +1,11 @@
 import * as React from "react";
 
-import { Layout } from "../../components/Layout";
-
 const Home = (): JSX.Element => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>❓❗Where is it ❗❓</h1>
-  </Layout>
+  <main className="centered-content">
+    <h1 className="text-4xl text-pink-400 pointer-events-none">
+      ❔❕Where is it❕❔
+    </h1>
+  </main>
 );
 
 export default Home;

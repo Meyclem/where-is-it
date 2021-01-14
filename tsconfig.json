@@ -15,6 +15,16 @@
     "noUnusedParameters": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@firebase/*": ["src/firebase/*"],
+      "@errors": ["src/errors"],
+      "@typings/*": ["src/typings/*"],
+      "@utils/*": ["src/utils/*"],
+      "@middlewares/*": ["src/middlewares/*"],
+      "@components/*": ["src/components/*"],
+      "@hooks/*": ["src/hooks/*"],
+    },
     "strict": true,
     "target": "esnext"
   },

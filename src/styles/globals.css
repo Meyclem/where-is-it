@@ -1,0 +1,80 @@
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered-content {
+  @apply container m-auto flex justify-center items-center h-full flex-grow;
+}
+
+.loader {
+  @apply absolute top-0 bottom-0 right-0 left-0;
+  @apply m-auto justify-center items-center h-full flex-grow;
+  background-color: rgba(255,255,255, 0.7);
+
+  p:after {
+    content: ' .';
+    animation: dots 1s steps(5, end) infinite;}
+
+  @keyframes dots {
+    0%, 20% {
+      color: rgba(0,0,0,0);
+      text-shadow:
+        .25em 0 0 rgba(0,0,0,0),
+        .5em 0 0 rgba(0,0,0,0);
+    }
+    40% {
+      color: rgba(244, 114, 182,1);
+      text-shadow:
+        .25em 0 0 rgba(0,0,0,0),
+        .5em 0 0 rgba(0,0,0,0);
+    }
+    60% {
+      text-shadow:
+        .25em 0 0 rgba(244, 114, 182,1),
+        .5em 0 0 rgba(0,0,0,0);
+    }
+    80%, 100% {
+      text-shadow:
+        .25em 0 0 rgba(244, 114, 182,1),
+        .5em 0 0 rgba(244, 114, 182,1);
+    }
+  }
+}
+
+.navbar {
+  @apply border h-14;
+}
+
+.active {
+  @apply text-pink-400;
+}
+
+.app-input {
+  @apply border border-gray-400 p-2 rounded;
+}
+
+.app-label {
+  @apply text-gray-600;
+}
+
+.btn {
+  @apply border border-pink-400 p-2 rounded shadow-none transition-all outline-none bg-white;
+
+  &:hover {
+    @apply shadow-md border-pink-600;
+  }
+
+  &:focus {
+    @apply border-pink-800;
+  }
+
+  &:disabled {
+    @apply text-gray-400 border-pink-200 cursor-not-allowed;
+  }
+
+  &:hover&:disabled {
+    @apply text-gray-400 border-pink-200 cursor-not-allowed;
+  }
+}
