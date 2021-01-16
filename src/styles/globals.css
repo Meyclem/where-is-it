@@ -92,3 +92,7 @@
     @apply top-16 bottom-auto right-2;
   }
 }
+
+.input-group {
+  @apply flex flex-col;
+}

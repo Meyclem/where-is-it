@@ -17,7 +17,7 @@ export const requireJWTAuth = async (
   }
 
   if (process.env.NODE_ENV !== "production") {
-    const auth = (await decode(jwt)) as firebaseAdmin.auth.DecodedIdToken;
+    const auth = decode(jwt) as firebaseAdmin.auth.DecodedIdToken;
     if (!auth) {
       throw new NotAuthorized();
     }

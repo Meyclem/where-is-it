@@ -18,7 +18,7 @@ export const useGoogleAuthProvider = (
           firebaseClient
             .auth()
             .currentUser?.getIdToken()
-            .then(async (token) => {
+            .then(async () => {
               const user = await firebaseClient.auth()?.currentUser;
 
               if (user) {
@@ -29,10 +29,11 @@ export const useGoogleAuthProvider = (
                     Authorization: `Bearer ${token}`,
                   },
                 });
-              }
-              if (token) {
-                router.push("/things");
-                setIsLoading(false);
+
+                if (token) {
+                  router.push("/things");
+                  setIsLoading(false);
+                }
               }
             });
         }

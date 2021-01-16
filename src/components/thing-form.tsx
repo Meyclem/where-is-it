@@ -1,4 +1,8 @@
-import React, { useState } from "react";
+import { firebaseClient } from "@firebase/client";
+import React, { useEffect, useState } from "react";
+import { useAuth } from "src/contexts/auth-context";
+
+import { InputGroup } from "./input-group";
 
 export const useThingForm = (): {
   DisplayFormButton: React.FC;
@@ -16,11 +20,54 @@ export const useThingForm = (): {
   };
 
   const ThingForm: React.FC = () => {
+    const { user } = useAuth();
     const [label, setLabel] = useState("");
+    const [note, setNote] = useState("");
+    const [loanDate, setLoanDate] = useState("");
+    const [borrowerEmail, setBorrowerEmail] = useState("");
+    const [borrowerName, setBorrowerName] = useState("");
+    const [disabled, setDisabled] = useState(true);
 
     const createThing = (): void => {
-      console.log(label);
+      if (user) {
+        const thing = {
+          label,
+          note,
+          loanDate,
+          user: {
+            uid: user.uid,
+            name: user.displayName,
+          },
+          borrower: {
+            name: borrowerName,
+            ...(borrowerEmail ? { email: borrowerEmail } : {}),
+          },
+        };
+        firebaseClient
+          .firestore()
+          .collection("things")
+          .add(thing)
+          .then(function (docRef) {
+            console.log("Document written with ID: ", docRef.id);
+            setDisplay(false);
+          })
+          .catch(function (error) {
+            console.error("Error adding document: ", error);
+          });
+        // console.log(computeThing());
+      }
     };
+
+    const validateForm = (): void => {
+      const checkLabel = label.length !== 0;
+      const checkLoanDate = loanDate.length !== 0;
+      const checkBorrowerName = borrowerName.length !== 0;
+      setDisabled(!(checkLabel && checkLoanDate && checkBorrowerName));
+    };
+
+    useEffect(() => {
+      validateForm();
+    }, [loanDate, label, borrowerName]);
 
     return (
       <form
@@ -30,16 +77,59 @@ export const useThingForm = (): {
           createThing();
         }}
       >
-        <label htmlFor="label" className="app-label">
-          Label
-        </label>
-        <input
-          type="text"
-          className="app-input"
+        <InputGroup
+          className="mb-4"
           id="label"
-          onChange={(event) => setLabel(event.target.value)}
+          label="Label"
+          onChange={(event) => {
+            setLabel(event.target.value);
+          }}
+          initialValue={label}
+          required={true}
         />
-        <button type="submit" className="btn">
+        <InputGroup
+          className="mb-4"
+          id="loanDate"
+          label="Note"
+          type="date"
+          rows={4}
+          required={true}
+          onChange={(event) => {
+            setLoanDate(event.target.value);
+          }}
+          initialValue={loanDate}
+        />
+        <InputGroup
+          className="mb-4"
+          id="borrower-name"
+          label="Borrower name"
+          required={true}
+          onChange={(event) => {
+            setBorrowerName(event.target.value);
+          }}
+          initialValue={borrowerName}
+        />
+        <InputGroup
+          className="mb-4"
+          type="email"
+          id="borrower-email"
+          label="Borrower email"
+          onChange={(event) => {
+            setBorrowerEmail(event.target.value);
+          }}
+          initialValue={borrowerEmail}
+        />
+        <InputGroup
+          id="note"
+          label="Note"
+          type="text-area"
+          rows={4}
+          onChange={(event) => {
+            setNote(event.target.value);
+          }}
+          initialValue={note}
+        />
+        <button type="submit" className="btn mt-8" disabled={disabled}>
           Create Thing
         </button>
       </form>
