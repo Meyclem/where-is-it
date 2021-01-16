@@ -11,6 +11,7 @@ if (!firebaseAdmin.apps.length) {
       projectId: process.env.FIREBASE_PROJECT_ID,
     }),
     databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
+    projectId: process.env.FIREBASE_PROJECT_ID,
   });
 }
 

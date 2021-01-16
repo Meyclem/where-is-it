@@ -25,17 +25,19 @@ export const Navbar: React.FC = () => {
   return (
     <div className="navbar flex items-center justify-between px-6">
       <NavLink href="/" displayText="Home" />
-      <NavLink href="/things" displayText="Things" />
       {user ? (
-        <a
-          className="cursor-pointer"
-          onClick={() => {
-            router.push("/");
-            firebaseClient.auth().signOut();
-          }}
-        >
-          Logout
-        </a>
+        <>
+          <NavLink href="/things" displayText="Things" />
+          <a
+            className="cursor-pointer"
+            onClick={() => {
+              router.push("/");
+              firebaseClient.auth().signOut();
+            }}
+          >
+            Logout
+          </a>
+        </>
       ) : (
         <NavLink href="/login" displayText="Login" />
       )}

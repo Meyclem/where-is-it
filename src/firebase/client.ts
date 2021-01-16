@@ -1,6 +1,7 @@
 import firebaseClient from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+import "firebase/functions";
 
 if (typeof window !== "undefined" && !firebaseClient.apps.length) {
   firebaseClient.initializeApp({
@@ -15,6 +16,11 @@ if (typeof window !== "undefined" && !firebaseClient.apps.length) {
   firebaseClient
     .auth()
     .setPersistence(firebaseClient.auth.Auth.Persistence.SESSION);
+  if (location.hostname === "localhost") {
+    firebaseClient.auth().useEmulator("http://localhost:9099/");
+    firebaseClient.firestore().useEmulator("localhost", 8080);
+    firebaseClient.functions().useEmulator("localhost", 5003);
+  }
 }
 
 export { firebaseClient };

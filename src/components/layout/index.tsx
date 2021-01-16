@@ -20,7 +20,7 @@ export const Layout = ({ children, title = "WII?" }: Props): JSX.Element => {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-      <Div100vh className="flex flex-col">
+      <Div100vh className="flex flex-col relative">
         <Navbar />
         {children}
       </Div100vh>

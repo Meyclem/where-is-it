@@ -12,15 +12,23 @@ asdf install
 yarn install
 ```
 
-### Start the main file
+### Firebase emulator init
+
+```bash
+firebase login
+firebase init emulators
+firebase init functions
+```
+
+### Start the app in development environment
 
 ```bash
 # Development mode
+yarn fb:start
 yarn dev
-
-# Production mode
-yarn start
 ```
+> - The app will be available on http://localhost:5000/
+> - Firebase emulation ui: http://localhost:5001/
 
 ### Build the project
 

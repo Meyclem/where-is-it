@@ -1,3 +1,4 @@
+import { useThingForm } from "@components/thing-form";
 import { NotAuthorized } from "@errors";
 import { GetServerSideProps, NextPage } from "next";
 import nookies from "nookies";
@@ -13,8 +14,15 @@ type ThingsProps = {
 };
 
 const Things: NextPage<ThingsProps> = ({ things }) => {
+  const { DisplayFormButton, display, ThingForm } = useThingForm();
+
   console.log(things);
-  return <main>THINGS</main>;
+  return (
+    <main className="container mx-auto pt-8 flex justify-center">
+      <DisplayFormButton />
+      {display ? <ThingForm /> : <>THINGS</>}
+    </main>
+  );
 };
 
 export const getServerSideProps: GetServerSideProps<ThingsProps> = async (

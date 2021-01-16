@@ -1,3 +1,6 @@
+.firebase-emulator-warning {
+  display: none;
+}
 .home {
   display: flex;
   justify-content: center;
@@ -76,5 +79,16 @@
 
   &:hover&:disabled {
     @apply text-gray-400 border-pink-200 cursor-not-allowed;
+  }
+}
+
+.add-thing-btn {
+  @apply btn;
+
+  position: absolute;
+  @apply bottom-2 top-auto;
+  
+  @media (min-width: 768px) {  
+    @apply top-16 bottom-auto right-2;
   }
 }
