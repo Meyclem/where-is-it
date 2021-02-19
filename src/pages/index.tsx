@@ -1,7 +1,7 @@
 import * as React from "react";
 
 const Home = (): JSX.Element => (
-  <main className="centered-content">
+  <main className="centered-content bg-red-300">
     <h1 className="text-4xl text-pink-400 pointer-events-none">
       ❔❕Where is it❕❔
     </h1>
