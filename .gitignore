@@ -11,3 +11,5 @@ yarn-error.log*
 functions/
 *-debug.log
 firebase-data
+
+.vercel
