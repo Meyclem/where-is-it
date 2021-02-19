@@ -61,7 +61,6 @@ export const useEmailAuthProvider = (
       .signInWithEmailAndPassword(email, password)
       .then(() => {
         router.push("/things");
-        setIsLoading(false);
       })
       .catch((error) => {
         setIsLoading(false);

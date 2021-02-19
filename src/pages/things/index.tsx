@@ -83,7 +83,7 @@ export const getServerSideProps: GetServerSideProps<ThingsProps> = async (
     return {
       props: {
         things: [],
-        error: err,
+        error: err.message,
       },
     };
   }

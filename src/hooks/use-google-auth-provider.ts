@@ -32,7 +32,6 @@ export const useGoogleAuthProvider = (
 
                 if (token) {
                   router.push("/things");
-                  setIsLoading(false);
                 }
               }
             });
