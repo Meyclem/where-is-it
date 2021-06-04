@@ -30,8 +30,6 @@ const handler: APIHandler = async (
       });
     });
 
-  console.log("😱", things);
-
   res.status(200).json(things);
 };
 
