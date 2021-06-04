@@ -15,9 +15,7 @@ export const useEmailAuthProvider = (
     name: string;
   }): Promise<void> => {
     const user = await firebaseClient.auth()?.currentUser;
-    console.log(data);
     if (user) {
-      console.log("🔐");
       const token = await user.getIdToken();
       if (token) {
         await fetch("/api/users", {
