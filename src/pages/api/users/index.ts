@@ -14,6 +14,9 @@ const handler: APIHandler = async (
   if (!(req.method === "POST")) {
     throw new ApiMethodNotAllowed();
   }
+
+  const { email, name } = JSON.parse(req.body);
+
   const userDocument = await firebaseAdmin
     .firestore()
     .collection("users")
@@ -23,9 +26,10 @@ const handler: APIHandler = async (
 
   if (!user) {
     await firebaseAdmin.firestore().collection("users").doc(auth.uid).set({
-      name: auth.name,
-      email: auth.email,
+      email,
+      name,
     });
+
     console.warn("🤖 [201] user created with email: " + auth.email);
     res.status(201).json({
       name: auth.name,
@@ -33,7 +37,7 @@ const handler: APIHandler = async (
     });
   } else {
     res.status(200).json(user);
-    console.warn("🤖 [200] user created with email: " + user.email);
+    console.warn("🤖 [200] user with email: " + user.email);
   }
 };
 
