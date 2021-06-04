@@ -20,14 +20,15 @@ export const useGoogleAuthProvider = (
             .currentUser?.getIdToken()
             .then(async () => {
               const user = await firebaseClient.auth()?.currentUser;
-
               if (user) {
+                const { displayName, email } = user;
                 const token = await user.getIdToken();
                 await fetch("/api/users", {
                   method: "POST",
                   headers: {
                     Authorization: `Bearer ${token}`,
                   },
+                  body: JSON.stringify({ email, name: displayName }),
                 });
 
                 if (token) {

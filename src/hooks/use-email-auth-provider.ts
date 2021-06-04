@@ -10,10 +10,14 @@ export const useEmailAuthProvider = (
 } => {
   const router = useRouter();
 
-  const findOrCreateUser = async (): Promise<void> => {
+  const findOrCreateUser = async (data: {
+    email: string;
+    name: string;
+  }): Promise<void> => {
     const user = await firebaseClient.auth()?.currentUser;
-
+    console.log(data);
     if (user) {
+      console.log("🔐");
       const token = await user.getIdToken();
       if (token) {
         await fetch("/api/users", {
@@ -21,6 +25,7 @@ export const useEmailAuthProvider = (
           headers: {
             Authorization: `Bearer ${token}`,
           },
+          body: JSON.stringify(data),
         });
         router.push("/things");
         setIsLoading(false);
@@ -45,7 +50,7 @@ export const useEmailAuthProvider = (
           });
         }
       })
-      .then(findOrCreateUser)
+      .then(() => findOrCreateUser({ email, name }))
       .catch((error) => {
         setIsLoading(false);
         console.error("🔴🔴🔴", error);

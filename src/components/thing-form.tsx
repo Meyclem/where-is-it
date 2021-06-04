@@ -54,7 +54,6 @@ export const useThingForm = (): {
           .catch(function (error) {
             console.error("Error adding document: ", error);
           });
-        // console.log(computeThing());
       }
     };
 
