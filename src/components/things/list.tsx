@@ -4,11 +4,13 @@ import React from "react";
 
 const ThingItem: React.FC<{ thing: Thing }> = ({ thing }) => {
   return (
-    <li className="border border-pink-200 mb-1 p-1">
-      <p className="font-normal">{thing.label}</p>
-      <p className="text-sm font-extralight">
-        Borrowed by <span className="font-normal">{thing.borrower.name}</span>{" "}
-        on {format(new Date(thing.loanDate), "PPP")}
+    <li className="border mb-1 p-1">
+      <p className="font-light text-pink-400">{thing.label}</p>
+      <p className="text-sm font-thin">
+        Loaned to <span className="font-light">{thing.borrower.name}</span> on{" "}
+        <span className="font-light">
+          {format(new Date(thing.loanDate), "PPP")}
+        </span>
       </p>
       {thing.note && <p>{thing.note}</p>}
     </li>

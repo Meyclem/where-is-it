@@ -23,7 +23,7 @@ export const Navbar: React.FC = () => {
   const { user } = useAuth();
   const router = useRouter();
   return (
-    <div className="navbar flex items-center justify-between px-6 h-14">
+    <div className="navbar flex items-center justify-between px-6 border-b">
       <NavLink href="/" displayText="Home" />
       {user ? (
         <>
