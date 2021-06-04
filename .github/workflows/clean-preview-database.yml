@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - 'CU-ek6534_Firebase-for-preview-apps'
+      - 'main'
 
 jobs:
   clean-database:
