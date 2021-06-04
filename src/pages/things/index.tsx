@@ -33,6 +33,7 @@ const Things: NextPage<ThingsProps> = ({ things, error }) => {
           querySnapshot.forEach(function (doc) {
             things.push({ ...doc.data(), id: doc.id } as Thing);
           });
+          console.log("✅", things);
           setThings(things);
         });
       return () => unsubscribe();
