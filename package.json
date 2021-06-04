@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "fb:start": "firebase emulators:start --export-on-exit=./firebase-data --import=./firebase-data",
+    "fb:clean-preview": "ts-node bin/clean-preview-database.ts",
     "dev": "next -p 5000",
     "build": "next build",
     "lint": "eslint --ext ts . --fix",
