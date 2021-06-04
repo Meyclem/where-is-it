@@ -47,10 +47,7 @@ export const useThingForm = (): {
           .firestore()
           .collection("things")
           .add(thing)
-          .then(function (docRef) {
-            console.log("Document written with ID: ", docRef.id);
-            setDisplay(false);
-          })
+          .then(() => setDisplay(false))
           .catch(function (error) {
             console.error("Error adding document: ", error);
           });

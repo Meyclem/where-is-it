@@ -66,7 +66,11 @@ export const getServerSideProps: GetServerSideProps<ThingsProps> = async (
       throw new NotAuthorized();
     }
 
-    const res = await fetch(process.env.BASE_URL + "api/things", {
+    const url = `http${ctx.req.headers.host?.match(/localhost/) ? "" : "s"}://${
+      ctx.req.headers.host
+    }/`;
+
+    const res = await fetch(url + "api/things", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${accessToken}`,
