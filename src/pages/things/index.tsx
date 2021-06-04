@@ -1,4 +1,5 @@
 import { useThingForm } from "@components/thing-form";
+import { ThingsList } from "@components/things/list";
 import { NotAuthorized } from "@errors";
 import { firebaseClient } from "@firebase/client";
 import { Thing } from "@typings/thing";
@@ -37,20 +38,12 @@ const Things: NextPage<ThingsProps> = ({ things, error }) => {
         });
       return () => unsubscribe();
     }
-  }, []);
+  }, [things.length]);
 
   return (
-    <main className="container mx-auto pt-8 flex justify-center">
+    <main className="container mx-auto pt-6 md:pt-14 flex justify-center">
       <DisplayFormButton />
-      {display ? (
-        <ThingForm />
-      ) : (
-        <ul>
-          {thingsToDisplay.map((thing) => {
-            return <li key={thing.id}>{thing.label}</li>;
-          })}
-        </ul>
-      )}
+      {display ? <ThingForm /> : <ThingsList things={thingsToDisplay} />}
     </main>
   );
 };
