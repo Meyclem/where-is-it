@@ -29,6 +29,7 @@ export const useThingForm = (): {
     const [disabled, setDisabled] = useState(true);
 
     const createThing = (): void => {
+      console.log(user);
       if (user) {
         const thing = {
           label,
