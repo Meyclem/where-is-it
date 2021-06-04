@@ -12,4 +12,4 @@ updates:
   reviewers:
   - Meyclem
   ignore:
-    - dependency-name: "express"
+    - dependency-name: "firebase"
