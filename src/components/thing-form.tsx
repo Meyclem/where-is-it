@@ -89,9 +89,8 @@ export const useThingForm = (): {
         <InputGroup
           className="mb-4"
           id="loanDate"
-          label="Note"
+          label="Loan date"
           type="date"
-          rows={4}
           required={true}
           onChange={(event) => {
             setLoanDate(event.target.value);
