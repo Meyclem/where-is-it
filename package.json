@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "autoprefixer": "10.2.6",
+    "date-fns": "^2.22.1",
     "firebase": "8.3.1",
     "firebase-admin": "9.9.0",
     "firebaseui": "4.8.0",

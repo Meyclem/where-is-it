@@ -47,7 +47,7 @@
 }
 
 .navbar {
-  @apply border h-14;
+  min-height: 56px;
 }
 
 .active {
