@@ -4,7 +4,7 @@
 
 ### Installation
 
-This project uses node `14.4.0` and yarn `1.22.4`.
+This project uses node `14.15.1` and yarn `1.22.4`.
 You can manuall install them or use [asdf](https://github.com/asdf-vm/asdf).
 
 ```bash
