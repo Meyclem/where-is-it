@@ -1,7 +1,4 @@
-import type {
-  DocumentInitialProps,
-  DocumentContext,
-} from "next/dist/next-server/lib/utils";
+import type { DocumentInitialProps, DocumentContext } from "next/document";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import React from "react";
 

@@ -12,9 +12,8 @@ const Login: NextPage = () => {
   const [showSignInForm, setShowSignInForm] = useState<boolean>(false);
   const [showSignUpForm, setShowSignUpForm] = useState<boolean>(false);
   const googleConnect = useGoogleAuthProvider(setIsLoading);
-  const { signUpWithEmail, signInWithEmail } = useEmailAuthProvider(
-    setIsLoading,
-  );
+  const { signUpWithEmail, signInWithEmail } =
+    useEmailAuthProvider(setIsLoading);
 
   const validateUser = (): void => {
     if (email !== "" && password !== "" && !showSignUpForm) {
