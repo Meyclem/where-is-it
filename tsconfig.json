@@ -16,6 +16,7 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "baseUrl": ".",
+    "useUnknownInCatchVariables": false,
     "paths": {
       "@firebase/*": ["src/firebase/*"],
       "@errors": ["src/errors"],
